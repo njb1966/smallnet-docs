@@ -43,5 +43,8 @@ iOS-only (check App Store availability and maintenance status).
 - If one client feels confusing, try another — they vary quite a bit in interface style.
 - Check each client's repository for current maintenance status before installing.
 
+=> /clients/ Back to clients
+=> / Back to main page
+
 Last reviewed: 2026-04-07
 Corrections welcome: smdocs@pm.me

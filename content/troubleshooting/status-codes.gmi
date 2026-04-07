@@ -86,7 +86,8 @@ Gemini status codes are simpler than HTTP — there are no 100-level information
 
 If your client shows an error code you do not recognise, the first digit tells you the general category.
 => /troubleshooting/certificates.gmi Certificates & trust (TOFU, client certs)
-=> /troubleshooting/ Back to troubleshooting index
+=> /troubleshooting/ Back to troubleshooting
+=> / Back to main page
 
 Last reviewed: 2026-04-07
 Corrections welcome: smdocs@pm.me

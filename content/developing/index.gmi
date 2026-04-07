@@ -5,5 +5,7 @@ This section is not the MVP focus, but it will grow to include:
 - libraries
 - test notes and implementation pitfalls
 
+=> / Back to main page
+
 Last reviewed: 2026-04-07
 Corrections welcome: smdocs@pm.me
