@@ -3,9 +3,9 @@
 SmallNet Docs is small-web oriented, but Gemini is the initial focus.
 
 Later, this section may include:
-- Gopher
-- Spartan
-- others
+* Gopher
+* Spartan
+* others
 
 => / Back to main page
 

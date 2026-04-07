@@ -6,14 +6,14 @@ SmallNet Docs is best-effort and fallible. Corrections and additions are welcome
 => https://github.com/njb1966/smallnet-docs GitHub: njb1966/smallnet-docs
 
 ## Also welcome
-- GitHub Issues (suggestions/corrections)
-- Email: smdocs@pm.me
+* GitHub Issues (suggestions/corrections)
+* Email: smdocs@pm.me
 
 ## Policies
 This capsule’s policies live in the repo:
-- Editorial policy
-- Contribution policy
-- Decision log
+* Editorial policy
+* Contribution policy
+* Decision log
 
 Last reviewed: 2026-04-07
 Corrections welcome: smdocs@pm.me

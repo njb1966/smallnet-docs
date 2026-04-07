@@ -5,10 +5,10 @@ If something is wrong or outdated, please tell us.
 
 ## 2-minute overview
 Gemini is a small, text-first protocol that tries to keep things simple:
-- pages are lightweight
-- there is no tracking by default
-- there is no client-side scripting
-- the format (gemtext) is intentionally minimal
+* pages are lightweight
+* there is no tracking by default
+* there is no client-side scripting
+* the format (gemtext) is intentionally minimal
 
 ## Your first steps
 1. Install a Gemini client
@@ -22,8 +22,8 @@ Gemini is a small, text-first protocol that tries to keep things simple:
 => /hosting-first-capsule.gmi Step 4: Host your first capsule
 
 ## What this site is (and is not)
-- This site is a curated map and a set of starter guides.
-- This site is not “the official Gemini docs”.
+* This site is a curated map and a set of starter guides.
+* This site is not “the official Gemini docs”.
 
 Last reviewed: 2026-04-07
 Corrections welcome: smdocs@pm.me

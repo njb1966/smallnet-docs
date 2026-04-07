@@ -5,9 +5,9 @@ If you're new, start here:
 => /clients/choose-a-client.gmi Choose a client (desktop/mobile/terminal)
 
 Later, this section will include:
-- a broader client list
-- basic feature notes (GUI/TUI, bookmarks, subscriptions)
-- last-reviewed stamps
+* a broader client list
+* basic feature notes (GUI/TUI, bookmarks, subscriptions)
+* last-reviewed stamps
 
 => / Back to main page
 

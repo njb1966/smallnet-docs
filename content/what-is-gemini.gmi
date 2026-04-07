@@ -4,15 +4,15 @@ Gemini is an Internet protocol for requesting and serving documents (similar in 
 with deliberate constraints to keep it simple, privacy-respecting, and consistent.
 
 ## Key ideas (plain language)
-- Text-first documents (gemtext)
-- Encrypted connections (TLS)
-- No scripts, no ads, no tracking mechanisms built into the format
-- Simple request/response model
+* Text-first documents (gemtext)
+* Encrypted connections (TLS)
+* No scripts, no ads, no tracking mechanisms built into the format
+* Simple request/response model
 
 ## Vocabulary
-- Capsule: a Gemini site
-- Client: a Gemini browser/app
-- Gemtext: the Gemini text format
+* Capsule: a Gemini site
+* Client: a Gemini browser/app
+* Gemtext: the Gemini text format
 
 ## Where to go next
 => /start-here.gmi Start here

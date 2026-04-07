@@ -1,9 +1,9 @@
 # Developing (later)
 
 This section is not the MVP focus, but it will grow to include:
-- protocol/spec references
-- libraries
-- test notes and implementation pitfalls
+* protocol/spec references
+* libraries
+* test notes and implementation pitfalls
 
 => / Back to main page
 

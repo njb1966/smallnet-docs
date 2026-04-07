@@ -44,10 +44,10 @@ Android-only. Another common option for Android users.
 iOS-only (check App Store availability and maintenance status).
 
 ## Notes
-- Clients handle TLS trust (TOFU) differently — you may be prompted to accept a certificate on first visit. This is normal.
-- Some clients support feed subscriptions (Gemini feeds / Atom); others do not.
-- If one client feels confusing, try another — they vary quite a bit in interface style.
-- Check each client's repository for current maintenance status before installing.
+* Clients handle TLS trust (TOFU) differently — you may be prompted to accept a certificate on first visit. This is normal.
+* Some clients support feed subscriptions (Gemini feeds / Atom); others do not.
+* If one client feels confusing, try another — they vary quite a bit in interface style.
+* Check each client's repository for current maintenance status before installing.
 
 => /clients/ Back to clients
 => / Back to main page
