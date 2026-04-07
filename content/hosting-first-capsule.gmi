@@ -6,6 +6,10 @@ This is a beginner-friendly overview of your options. It does not cover every se
 
 The simplest path: someone else runs the server, you upload content. Good while you are learning gemtext and deciding whether you want to self-host later.
 
+### GemCities (recommended starting point)
+A hosted Gemini community. Free capsules available under your own gemcities.com subdomain. No server administration required — a good first step into Geminispace.
+=> gemini://gemcities.com/ GemCities
+
 ### flounder.online
 A hosted capsule service. Free accounts available. You write gemtext in a web editor or upload files via a simple interface. No server administration required.
 => gemini://flounder.online/ flounder.online
