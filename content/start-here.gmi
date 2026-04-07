@@ -28,6 +28,7 @@ Gemini is a small, text-first protocol that tries to keep things simple:
 ## Additional curated resources
 Gemini is not about a centralized, siloed, gatekeeping, community. It is a living ecosystem with a LOT of resources. The following are other resources that I have been made aware of. It will ebb and flow over time, but the goal is to let newcomers discover Geminispace, not be forced into it.
 
+=> gemini://geminiprotocol.net/ Project Gemini
 => gemini://gemini.smallweb.space/HOWTO/index.gmi Gritty's HOWTOs
 
 Last reviewed: 2026-04-07
