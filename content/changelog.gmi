@@ -1,6 +1,18 @@
 # Changelog
 
-## 2026-04-07 (update)
+## 2026-04-07 (update 3)
+- Added back navigation links to all subdirectory pages
+- Fixed contribute.gmi: replaced TBD repo placeholder with github.com/njb1966/smallnet-docs
+- Fixed discovery.gmi: removed incorrect TLGS entry (was pointing to wrong URL)
+- Added links for Bombadillo and Gmni in clients/choose-a-client.gmi
+- Hosting decision recorded: Agate on contabo3, gemini://smnetdocs.gemcities.com/
+
+## 2026-04-07 (update 2)
+- Added GemCities as top recommended hosted capsule provider in hosting-first-capsule.gmi
+- Capsule deployed live at gemini://smnetdocs.gemcities.com/
+- Added scripts/deploy.sh for rsync deployment
+
+## 2026-04-07 (update 1)
 - Populated clients/choose-a-client.gmi (Lagrange, Castor, Amfora, Bombadillo, Gmni, Deedum, Ariane, Elaho)
 - Wrote publishing.gmi (gemtext format guide: line types, readability, capsule layout)
 - Wrote discovery.gmi (search engines, aggregators, curated directories)

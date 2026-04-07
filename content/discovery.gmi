@@ -40,10 +40,6 @@ Human-maintained lists of capsules. Useful for finding active, interesting conte
 The original Gemini project page includes links to community spaces and a casual capsule list.
 => gemini://gemini.circumlunar.space/ gemini.circumlunar.space (Gemini project home)
 
-### TLGS directory
-A curated directory maintained alongside the TLGS search engine.
-=> gemini://gemini.circumlunar.space/capcom/ (check TLGS and related directories)
-
 ### Station (social directory)
 A lightweight social space where Gemini users can post updates and follow each other. Useful for finding active capsules.
 => gemini://station.martinrue.com/ Station

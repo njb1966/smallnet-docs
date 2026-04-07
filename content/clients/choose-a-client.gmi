@@ -22,9 +22,11 @@ Cross-platform terminal client (Linux, macOS, Windows). Supports tabs, subscript
 
 ### Bombadillo
 Terminal client with support for Gemini, Gopher, and plain HTTP. Useful if you want one tool for multiple small-web protocols.
+=> https://tildegit.org/sloum/bombadillo Bombadillo on tildegit (web link)
 
 ### Gmni
 Minimal command-line client. No interactivity — useful for scripting or quick checks, not day-to-day browsing.
+=> https://git.sr.ht/~emersion/gmni gmni on sourcehut (web link)
 
 ## Mobile
 
