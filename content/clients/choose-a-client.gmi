@@ -13,6 +13,10 @@ Cross-platform (Windows, macOS, Linux). One of the most actively maintained GUI 
 Cross-platform GUI client (Windows, macOS, Linux). Supports Gemini, Gopher, Finger, and HTTP. A good option if you want one client for multiple small-web protocols.
 => https://github.com/MasterQ32/kristall Kristall on GitHub (web link)
 
+### Alhena
+Cross-platform GUI client (Windows, macOS, Linux). A lightweight option for browsing Geminispace.
+=> https://github.com/mochaman/alhena Alhena on GitHub (web link)
+
 ### Castor
 Linux/BSD desktop client (GTK). Simple and lightweight. Less feature-complete than Lagrange but easy to get running.
 => gemini://git.sr.ht/~julienxx/castor Castor on Sourcehut
