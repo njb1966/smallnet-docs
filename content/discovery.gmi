@@ -1,0 +1,60 @@
+# Reading & discovery
+
+Gemini is decentralised. Discovery works differently than the web — there are fewer large hubs, and more directories, aggregators, and word-of-mouth. This page is a starting map, not a complete list.
+
+## Search engines
+
+Gemini search engines index a subset of known capsules. Results and freshness vary.
+
+### GUS (Gemini Universal Search)
+One of the earliest and most well-known Gemini search engines. Indexes gemtext pages.
+=> gemini://gus.guru/ GUS
+
+### Kennedy
+A search engine focused on Gemini content.
+=> gemini://kennedy.gemi.dev/ Kennedy search
+
+### Marginalia
+An independent search engine that indexes the small web, including Gemini. Also has a web interface.
+=> gemini://search.marginalia.nu/ Marginalia (Gemini)
+
+Note: No Gemini search engine has complete coverage. Trying more than one is common practice.
+
+## Aggregators (new posts / feeds)
+
+These collect recent posts from capsules that publish Atom or Gemini feeds.
+
+### CAPCOM
+A feed aggregator for Gemini capsules. Requires capsules to publish a valid feed to appear.
+=> gemini://gemini.circumlunar.space/capcom/ CAPCOM
+
+### Antenna
+Another Gemini feed aggregator. Capsule operators can submit their feed URL to be included.
+=> gemini://warmedal.se/~antenna/ Antenna
+
+## Curated directories
+
+Human-maintained lists of capsules. Useful for finding active, interesting content without relying on search.
+
+### The Gemini Quickstart / Community pages
+The original Gemini project page includes links to community spaces and a casual capsule list.
+=> gemini://gemini.circumlunar.space/ gemini.circumlunar.space (Gemini project home)
+
+### TLGS directory
+A curated directory maintained alongside the TLGS search engine.
+=> gemini://gemini.circumlunar.space/capcom/ (check TLGS and related directories)
+
+### Station (social directory)
+A lightweight social space where Gemini users can post updates and follow each other. Useful for finding active capsules.
+=> gemini://station.martinrue.com/ Station
+
+## Tips for finding things
+
+Start with a search engine and a directory. When you find a capsule you like, check if they link to other capsules — word-of-mouth and blogroll-style links are common.
+
+Many capsule operators publish a "links" or "friends" page. These are often better curated than any automated index.
+
+If a capsule has a feed, add it to a client that supports subscriptions (Lagrange, Amfora) to follow new posts over time.
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

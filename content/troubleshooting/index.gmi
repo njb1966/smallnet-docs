@@ -1,0 +1,7 @@
+# Troubleshooting & reference
+
+=> /troubleshooting/status-codes.gmi Gemini status codes (starter)
+=> /troubleshooting/certificates.gmi Certificates & trust (starter)
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

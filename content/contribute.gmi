@@ -1,0 +1,20 @@
+# Contribute
+
+SmallNet Docs is best-effort and fallible. Corrections and additions are welcome.
+
+## Preferred: GitHub Pull Requests
+(TBD) Add GitHub repo link once published:
+- repo: smallnet-docs
+
+## Also welcome
+- GitHub Issues (suggestions/corrections)
+- Email: smdocs@pm.me
+
+## Policies
+This capsule’s policies live in the repo:
+- Editorial policy
+- Contribution policy
+- Decision log
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

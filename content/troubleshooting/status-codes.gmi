@@ -1,0 +1,92 @@
+# Gemini status codes
+
+Gemini responses begin with a two-digit status code. This page explains what they mean in practice.
+
+The first digit is the category. The second digit provides more detail.
+
+## 1x — Input required
+
+The server is asking you to provide input before it can respond.
+
+### 10 — Input
+The server wants you to type something (a search query, a username, etc.). Your client should show a prompt.
+
+### 11 — Sensitive input
+Same as 10, but the server is signalling that the input is sensitive (e.g. a password). Your client may hide what you type.
+
+## 2x — Success
+
+### 20 — Success
+The most common response. The server is returning content. The rest of the header includes the MIME type (usually text/gemini for .gmi pages).
+
+## 3x — Redirect
+
+The resource has moved. Your client should follow the redirect automatically.
+
+### 30 — Temporary redirect
+The content is temporarily at a different address.
+
+### 31 — Permanent redirect
+The content has permanently moved. Update any bookmarks you have.
+
+## 4x — Temporary failure
+
+Something went wrong, but it may be worth trying again later.
+
+### 40 — Temporary failure (generic)
+Unspecified temporary problem on the server side.
+
+### 41 — Server unavailable
+The server is overloaded, under maintenance, or temporarily offline.
+
+### 42 — CGI error
+The server runs CGI scripts and one of them failed.
+
+### 43 — Proxy error
+The server was acting as a proxy and the upstream request failed.
+
+### 44 — Slow down
+The server is rate-limiting you. The response includes a number of seconds to wait before retrying.
+
+## 5x — Permanent failure
+
+Something is wrong that is unlikely to be fixed by retrying.
+
+### 50 — Permanent failure (generic)
+Unspecified permanent problem.
+
+### 51 — Not found
+The requested resource does not exist at this address. The capsule equivalent of HTTP 404.
+
+### 52 — Gone
+The resource existed but has been permanently removed. Unlike 51, this explicitly signals that it was intentionally removed.
+
+### 53 — Proxy request refused
+The server does not allow proxying to the requested host.
+
+### 59 — Bad request
+The server could not parse your request. Usually a client issue.
+
+## 6x — Client certificate required
+
+The server requires you to identify yourself with a client certificate.
+
+### 60 — Certificate required
+You need to provide a client certificate to access this resource. Your client should offer to create or select one.
+
+### 61 — Certificate not authorised
+You provided a certificate, but this server does not recognise or accept it.
+
+### 62 — Certificate not valid
+You provided a certificate, but it is expired or otherwise invalid.
+
+## Notes
+
+Gemini status codes are simpler than HTTP — there are no 100-level informational codes, no 200-level sub-codes for created/accepted/etc., and no complex caching directives. The protocol intentionally keeps this minimal.
+
+If your client shows an error code you do not recognise, the first digit tells you the general category.
+=> /troubleshooting/certificates.gmi Certificates & trust (TOFU, client certs)
+=> /troubleshooting/ Back to troubleshooting index
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

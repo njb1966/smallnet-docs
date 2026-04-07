@@ -1,0 +1,47 @@
+# Choose a Gemini client
+
+This page lists common starting points. It is not a "best client" ranking — different clients suit different setups. If you have corrections or additions, please contact us.
+
+## Desktop (GUI)
+Graphical clients. A good first choice if you prefer a familiar browser-like feel.
+
+### Lagrange
+Cross-platform (Windows, macOS, Linux). One of the most actively maintained GUI clients. Features include bookmarks, subscriptions (Atom/Gemini feeds), history, and multiple tabs. Good starting point for most newcomers.
+=> gemini://skyjake.fi/lagrange/ Lagrange home capsule
+
+### Castor
+Linux/BSD desktop client (GTK). Simple and lightweight. Less feature-complete than Lagrange but easy to get running.
+=> gemini://git.sr.ht/~julienxx/castor Castor on Sourcehut
+
+## Desktop / Terminal (TUI)
+Terminal-based clients. Good for Linux/Debian users, SSH sessions, and low-resource setups.
+
+### Amfora
+Cross-platform terminal client (Linux, macOS, Windows). Supports tabs, subscriptions, bookmarks, and themes. A common first choice for terminal users.
+=> gemini://hserc.xyz/amfora Amfora info (check for current repo)
+
+### Bombadillo
+Terminal client with support for Gemini, Gopher, and plain HTTP. Useful if you want one tool for multiple small-web protocols.
+
+### Gmni
+Minimal command-line client. No interactivity — useful for scripting or quick checks, not day-to-day browsing.
+
+## Mobile
+
+### Deedum
+Available for Android and iOS. Basic but functional; actively maintained as of last review. A reasonable starting point for mobile newcomers.
+
+### Ariane
+Android-only. Another common option for Android users.
+
+### Elaho
+iOS-only (check App Store availability and maintenance status).
+
+## Notes
+- Clients handle TLS trust (TOFU) differently — you may be prompted to accept a certificate on first visit. This is normal.
+- Some clients support feed subscriptions (Gemini feeds / Atom); others do not.
+- If one client feels confusing, try another — they vary quite a bit in interface style.
+- Check each client's repository for current maintenance status before installing.
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

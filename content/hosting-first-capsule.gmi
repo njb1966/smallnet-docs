@@ -1,0 +1,103 @@
+# Hosting your first capsule
+
+This is a beginner-friendly overview of your options. It does not cover every server or setup — it covers common starting points.
+
+## Hosted capsule providers
+
+The simplest path: someone else runs the server, you upload content. Good while you are learning gemtext and deciding whether you want to self-host later.
+
+### flounder.online
+A hosted capsule service. Free accounts available. You write gemtext in a web editor or upload files via a simple interface. No server administration required.
+=> gemini://flounder.online/ flounder.online
+
+### srht.site / tildepages
+Some "tilde" communities (shared Unix servers) offer Gemini hosting as part of membership. You get a shell account and a home directory that is served over Gemini.
+=> gemini://tilde.team/ tilde.team (check for Gemini hosting details)
+
+Check each provider for current availability, storage limits, and terms before signing up.
+
+## Self-hosting
+
+More control, more responsibility. You run the server software on a machine you manage.
+
+### What you need
+* A server reachable from the internet (a VPS works; home hosting requires port forwarding or a tunnel)
+* Port 1965 open in your firewall
+* A TLS certificate
+* A Gemini server binary
+
+### TLS certificates
+
+Gemini requires TLS. Unlike HTTPS, Gemini does not use certificate authorities by default — clients use TOFU (trust on first use). This means you can use a self-signed certificate.
+
+To generate a self-signed certificate (valid for 10 years, adjust as needed):
+
+```
+openssl req -x509 -newkey rsa:4096 \
+  -keyout key.pem -out cert.pem \
+  -days 3650 -nodes \
+  -subj "/CN=yourhostname.example"
+```
+
+Replace yourhostname.example with your actual hostname or IP address.
+
+Some server software can generate a certificate for you on first run — check your server's documentation.
+
+### Common server options
+
+#### Agate
+Simple, easy to configure. Written in Rust. A common first choice for self-hosters.
+=> gemini://qwertqwerf.com/agate/ Agate (check for current project page)
+
+#### Molly Brown
+Written in Go. More configurable than Agate, with support for CGI and virtual hosting.
+
+#### gmid
+Written in C. Minimal and fast. Supports CGI and virtual hosting.
+
+Start with Agate or Molly Brown if you are new to self-hosting. Both have straightforward configuration.
+
+### Basic directory layout
+
+A minimal capsule:
+
+```
+/var/gemini/         ← or wherever your server's root is
+  index.gmi          ← your homepage
+  about.gmi
+  posts/
+    index.gmi
+    2026-04-01-hello.gmi
+```
+
+Your server will be configured to serve files from a root directory. Requests for gemini://yourhost/ map to index.gmi in that root.
+
+### Keeping it simple
+
+You do not need dynamic content, a database, or a build system to run a capsule. A folder of .gmi files is enough.
+
+Update content by editing files and copying them to your server (scp, rsync, or whatever you prefer).
+
+A basic update workflow:
+
+```
+rsync -av /local/capsule/ user@yourserver:/var/gemini/
+```
+
+## Backups
+
+At minimum: keep a local copy of everything in your capsule root. If you are on a VPS, periodically rsync or scp the files back to your machine.
+
+Gemini capsules are typically small. A full backup is quick.
+
+## What to put in your first capsule
+
+A simple starting point:
+* index.gmi — introduce yourself or the capsule's purpose
+* about.gmi — optional, but useful
+* One post or page of actual content
+
+You do not need to wait until it is "ready." A sparse capsule is fine. You can grow it over time.
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

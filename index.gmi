@@ -1,0 +1,17 @@
+# SmallNet Docs
+
+A Gemini-native documentation hub for the small web (Gemini-first).
+
+=> /start-here.gmi New to Gemini? Start here
+=> /what-is-gemini.gmi What is Gemini?
+=> /clients/ Choose a Gemini client
+=> /discovery.gmi Reading & discovery (search, directories, aggregators)
+=> /publishing.gmi Publishing (writing gemtext)
+=> /hosting-first-capsule.gmi Hosting your first capsule
+=> /troubleshooting/ Troubleshooting & reference
+=> /other-protocols/ Other protocols (later)
+=> /contribute.gmi Contribute / policies
+=> /changelog.gmi Changelog
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

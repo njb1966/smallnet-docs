@@ -1,0 +1,116 @@
+# Publishing (writing gemtext)
+
+Gemtext is intentionally simple — there are only a handful of line types. This page is a practical starter guide.
+
+## The line types
+
+Gemtext is line-oriented. Each line has a type determined by its prefix (or lack of one).
+
+### Text
+A plain line with no prefix is a paragraph. Keep paragraphs short — gemtext readers vary and there is no word-wrap guarantee across clients.
+
+### Headings
+Three levels, using # characters at the start of the line:
+
+```
+# Heading 1
+## Heading 2
+### Heading 3
+```
+
+Use headings to break up longer pages. Most capsules stay at one or two heading levels.
+
+### Links
+Links are their own line, starting with =>:
+
+```
+=> gemini://example.com Link text here
+=> gemini://example.com/page.gmi Another link
+```
+
+Link text is required and should describe the destination — clients often display links as a list, so "click here" is not useful.
+
+You can also link to other protocols:
+```
+=> https://example.com A web link
+=> gopher://example.com A gopher link
+```
+
+### Lists
+Lines starting with * are unordered list items:
+
+```
+* First item
+* Second item
+* Third item
+```
+
+There are no ordered lists or nested lists in gemtext. If you need numbered steps, write them as plain text lines ("1. Do this", "2. Do that").
+
+### Blockquotes
+Lines starting with > are blockquotes:
+
+```
+> Something worth quoting.
+```
+
+### Preformatted blocks
+Wrap preformatted content in ``` lines. Content inside is rendered as monospace and not parsed:
+
+```
+` ``
+Some code or ASCII art here.
+Line breaks and spacing are preserved.
+` ``
+```
+
+(Remove the extra space after the backtick — that is just to show the example.)
+
+Everything inside is treated as literal text. The opening ``` can include an alt-text label for screen readers:
+
+```
+` ``alt text description
+...content...
+` ``
+```
+
+## Writing for readability
+
+Short paragraphs work better than long ones — gemtext has no word wrapping standard.
+
+Descriptive link text matters. Clients often extract links into a separate list. "Read more" as link text is useless out of context.
+
+Avoid deeply nested structure. Gemtext does not support it well and readers do not expect it.
+
+## Organising a capsule
+
+A typical starting layout:
+
+```
+index.gmi        ← root page, links to everything
+about.gmi        ← who you are, what this capsule is
+posts/           ← a folder for posts or articles
+  index.gmi      ← list of posts with links
+  2026-04-01-first-post.gmi
+```
+
+Keep your index.gmi honest — it is the first thing visitors see.
+
+An about.gmi is optional but appreciated, especially if your capsule is not obviously self-explanatory.
+
+## Linking across protocols
+
+You can link to Gopher, HTTPS, or other targets. Clients handle these differently — some open them in a browser, some warn the user, some refuse.
+
+A common practice is to note when a link leaves Gemini:
+
+```
+=> https://example.com Some reference (web link)
+```
+
+## File extension
+
+Gemini files typically use .gmi or .gemini. Most servers and clients recognise both; .gmi is more common in practice.
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

@@ -1,0 +1,17 @@
+# Changelog
+
+## 2026-04-07 (update)
+- Populated clients/choose-a-client.gmi (Lagrange, Castor, Amfora, Bombadillo, Gmni, Deedum, Ariane, Elaho)
+- Wrote publishing.gmi (gemtext format guide: line types, readability, capsule layout)
+- Wrote discovery.gmi (search engines, aggregators, curated directories)
+- Wrote hosting-first-capsule.gmi (hosted providers, self-hosting, TLS, server options, layout)
+- Wrote troubleshooting/certificates.gmi (TOFU, certificate prompts, client certs)
+- Created troubleshooting/status-codes.gmi (full 1x–6x code reference)
+
+## 2026-04-07
+- Initial repository structure created
+- Added policies (editorial + contribution)
+- Added initial Gemini content skeleton pages
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

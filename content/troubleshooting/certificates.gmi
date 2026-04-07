@@ -1,0 +1,55 @@
+# Certificates & trust
+
+Gemini uses TLS for all connections. This page explains what that means in practice for a newcomer.
+
+## What is a certificate?
+
+When you connect to a Gemini capsule, the server presents a TLS certificate. The certificate identifies the server and enables an encrypted connection.
+
+On the web, certificates are verified by trusted certificate authorities (CAs). Gemini does not use this system by default — instead, most Gemini clients use TOFU.
+
+## TOFU (trust on first use)
+
+TOFU means: the first time you connect to a capsule, your client remembers the certificate. On future visits, it checks that the certificate matches what it saw before.
+
+If the certificate changes unexpectedly, your client will warn you.
+
+This is similar to how SSH handles host keys — you trust the server on first contact and are alerted if something changes later.
+
+## Common certificate prompts
+
+### "New certificate — do you want to trust it?"
+Normal on first visit to any capsule. The client is recording the certificate for future comparison. Accept it if you intended to visit that capsule.
+
+### "Certificate has changed since last visit"
+The capsule's certificate has been updated or replaced. This happens when:
+* The operator renewed an expiring certificate
+* The server was reinstalled or reconfigured
+* Something unexpected happened (less common)
+
+Most clients will ask you whether to accept the new certificate or reject the connection. If you trust the site and the change seems plausible (e.g. the old cert was expiring), accepting is reasonable. If you are unsure, you can wait and check back later, or reach out to the capsule operator.
+
+### "Certificate expired"
+Certificates have an expiry date. An expired certificate does not automatically mean the connection is unsafe — small capsule operators sometimes let certs lapse and renew them late. Some clients will warn but still connect; others will refuse.
+
+## Client certificates (status 60)
+
+Some capsules require a client certificate to access content — this is Gemini's mechanism for authentication or identity.
+
+If a capsule returns a status 60 response, it is requesting a client certificate. Your client should offer to generate one or let you select an existing one.
+
+Client certificates in Gemini are typically self-signed and pseudonymous — the capsule operator does not need to know who you are, just that the same certificate is being used across visits.
+
+Not all clients support client certificates. If you need this feature, check your client's documentation.
+
+## What clients do differently
+
+Different Gemini clients handle certificate trust in different ways:
+* Some show a fingerprint and ask you to compare manually
+* Some silently record on first use
+* Some give you more detail about expiry dates and certificate contents
+
+If you are unsure what your client is doing, check its documentation or settings.
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

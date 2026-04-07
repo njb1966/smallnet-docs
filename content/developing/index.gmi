@@ -1,0 +1,9 @@
+# Developing (later)
+
+This section is not the MVP focus, but it will grow to include:
+- protocol/spec references
+- libraries
+- test notes and implementation pitfalls
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me
