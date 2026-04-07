@@ -8,6 +8,8 @@ A Gemini-native documentation hub for the small web (Gemini-first).
 => /discovery.gmi Reading & discovery (search, directories, aggregators)
 => /publishing.gmi Publishing (writing gemtext)
 => /hosting-first-capsule.gmi Hosting your first capsule
+=> /operating/ Operating a Gemini server (server setup, CGI, virtual hosting)
+=> /developing/ Developing with Gemini (protocol, libraries)
 => /troubleshooting/ Troubleshooting & reference
 => /other-protocols/ Other protocols (later)
 => /contribute.gmi Contribute / policies

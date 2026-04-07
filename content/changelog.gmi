@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-04-07 (update 4)
+* Added operating/ section: server comparison, virtual hosting, CGI
+* Fleshed out developing/ section: protocol overview, libraries by language
+* Updated main index to link both new sections
+
 ## 2026-04-07 (update 3)
 *Added back navigation links to all subdirectory pages
 *Fixed contribute.gmi: replaced TBD repo placeholder with github.com/njb1966/smallnet-docs

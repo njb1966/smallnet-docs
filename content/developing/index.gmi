@@ -1,9 +1,20 @@
-# Developing (later)
+# Developing with Gemini
 
-This section is not the MVP focus, but it will grow to include:
-* protocol/spec references
-* libraries
-* test notes and implementation pitfalls
+Guides for developers building Gemini clients, servers, and tools.
+
+## In this section
+
+=> protocol-overview.gmi Protocol overview (request/response format, status codes, TLS)
+=> libraries.gmi Client and server libraries by language
+
+## Also useful
+
+=> /troubleshooting/status-codes.gmi Status code reference (for server implementors)
+=> /operating/ Operating a Gemini server
+
+## Notes on the spec
+
+The canonical Gemini specification is at gemini.circumlunar.space. The pages here are a practical summary — when there is any ambiguity, the spec takes precedence.
 
 => / Back to main page
 

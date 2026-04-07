@@ -1,0 +1,135 @@
+# Comparing Gemini servers
+
+This is a practical overview of common self-hosted Gemini server options as of 2026. It is not exhaustive — it covers the servers most commonly mentioned in Geminispace.
+
+All of these are open source and run on Linux. Most also work on BSD and macOS.
+
+## Quick reference
+
+* Agate — Rust — static files, simple setup, good starting point
+* Molly Brown — Go — CGI, virtual hosting, more configuration options
+* gmid — C — CGI, SCGI, virtual hosting, minimal footprint
+* Jetforce — Python — framework for dynamic Gemini apps
+* gmnisrv — C — minimal, static files, straightforward config
+
+---
+
+## Agate
+
+Written in Rust. The most commonly recommended server for new self-hosters.
+
+Strengths:
+* Very easy to set up — pass a few flags and it runs
+* Generates a self-signed certificate automatically on first run
+* Actively maintained
+
+Limitations:
+* No CGI support (static files only)
+* Virtual hosting support was added in later versions — check your release notes
+
+Typical startup:
+
+```
+agate --content /var/gemini --addr 0.0.0.0:1965 \
+      --hostname yourdomain.example
+```
+
+Agate serves everything under --content as static files. Subdirectories map to URL paths.
+
+---
+
+## Molly Brown
+
+Written in Go. More configurable than Agate, with support for CGI and virtual hosting.
+
+Strengths:
+* CGI support for dynamic content
+* Virtual hosting via configuration file
+* Access control, redirects, and MIME type overrides
+* Good documentation
+
+Configuration is a TOML file. A minimal example:
+
+```
+DocBase = "/var/gemini/default"
+CertPath = "/etc/molly/cert.pem"
+KeyPath  = "/etc/molly/key.pem"
+```
+
+A good step up from Agate once you need more control.
+
+---
+
+## gmid
+
+Written in C. Minimal and fast, with CGI and SCGI support.
+
+Strengths:
+* Small binary, low resource usage
+* CGI and SCGI support
+* Virtual hosting
+* FastCGI-style SCGI support for persistent dynamic backends
+
+Configuration uses a block syntax. A basic server block:
+
+```
+server "yourdomain.example" {
+	cert "/etc/gmid/cert.pem"
+	key  "/etc/gmid/key.pem"
+	root "/var/gemini/yourdomain"
+}
+```
+
+Multiple server blocks in the same config file handle virtual hosting. Each block gets its own hostname, certificate, and content root.
+
+Good choice if you want low overhead or are comfortable with C-style config files.
+
+---
+
+## Jetforce
+
+Written in Python. Less a static file server, more a framework for building dynamic Gemini applications.
+
+Strengths:
+* Python-native — easy to write handlers in Python
+* Request routing, CGI-like callbacks
+* Good for prototyping dynamic capsules
+
+If you want to serve static files, Agate or gmid are simpler. Jetforce shines when the capsule itself is mostly dynamic content.
+
+---
+
+## gmnisrv
+
+Written in C. Minimal static file server, simple config.
+
+Strengths:
+* Small and easy to audit
+* Straightforward INI-style config
+
+Limitations:
+* Less feature-rich than gmid or Molly Brown
+
+A reasonable choice for simple static capsules where you prefer C software.
+
+---
+
+## Which to choose
+
+Starting out and want something that just works: Agate.
+
+Need CGI or virtual hosting and prefer Go: Molly Brown.
+
+Need CGI or virtual hosting and prefer C / want minimal footprint: gmid.
+
+Building a dynamic Gemini app in Python: Jetforce.
+
+All of them serve .gmi files correctly. The differences matter most once you need CGI, virtual hosting, or fine-grained access control.
+
+=> /operating/virtual-hosting.gmi Next: virtual hosting
+=> /operating/cgi.gmi Next: CGI and dynamic content
+
+=> /operating/ Back to operating index
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

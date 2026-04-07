@@ -1,0 +1,120 @@
+# Dynamic content with CGI
+
+CGI (Common Gateway Interface) lets your Gemini server run a script or program to generate a response dynamically, instead of serving a static file.
+
+Not all Gemini servers support CGI. Servers that do: Molly Brown, gmid, Jetforce (its own handler model). Agate does not support CGI.
+
+## How it works
+
+When a request maps to a CGI script, the server:
+
+1. Executes the script as a subprocess
+2. Passes request details via environment variables
+3. Sends the script's stdout back to the client as the Gemini response
+
+The script must produce a valid Gemini response: a status line followed (for 2x responses) by the body.
+
+## Gemini environment variables
+
+The server sets these before running the script:
+
+* GEMINI_URL — the full requested URL
+* SERVER_NAME — the hostname
+* SERVER_PORT — usually 1965
+* PATH_INFO — the path component of the URL
+* QUERY_STRING — the query string (everything after ?)
+* REMOTE_ADDR — the client's IP address
+* TLS_CLIENT_CERT — the client's certificate (if one was presented)
+* AUTH_TYPE — set to "Certificate" if a client cert is present
+
+Some servers set additional variables. Check your server's documentation.
+
+## A minimal CGI script
+
+A shell script that returns the current time:
+
+```
+#!/usr/bin/env bash
+set -euo pipefail
+echo "20 text/gemini"
+echo ""
+echo "# Current time"
+echo ""
+date
+```
+
+The first line of output is the Gemini header: status code, a space, then the MIME type (or meta string). Then a blank line, then the body.
+
+Save this as a file in your CGI directory (e.g. /var/gemini/cgi/time.sh), make it executable:
+
+```
+chmod +x /var/gemini/cgi/time.sh
+```
+
+Then configure your server to treat that path as CGI. In gmid:
+
+```
+server "yourdomain.example" {
+	cert "/etc/gmid/cert.pem"
+	key  "/etc/gmid/key.pem"
+	root "/var/gemini/yourdomain"
+
+	location "/cgi/*" {
+		cgi on
+	}
+}
+```
+
+## Handling query strings
+
+If a visitor submits input (via a 1x input prompt), the input lands in QUERY_STRING.
+
+A script that greets by name:
+
+```
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ -z "$QUERY_STRING" ]; then
+    echo "10 What is your name?"
+    exit 0
+fi
+
+NAME="$QUERY_STRING"
+echo "20 text/gemini"
+echo ""
+echo "# Hello, $NAME"
+```
+
+The first response (status 10) prompts the user for input. On the second request the name is in QUERY_STRING.
+
+Note: QUERY_STRING is URL-encoded. For anything beyond simple input, decode it in your script or use a language with URL-decoding support.
+
+## Security considerations
+
+CGI scripts run as the server process's user. Keep that in mind:
+
+* Sanitise any input from QUERY_STRING before using it in shell commands
+* Do not pass QUERY_STRING directly to a shell command (command injection risk)
+* Use a dedicated low-privilege user to run your Gemini server
+
+Avoid constructs like:
+
+```
+# Unsafe — do not do this
+result=$(some-command $QUERY_STRING)
+```
+
+Pass input as a quoted argument or process it in a language with proper parsing.
+
+## Alternatives to CGI
+
+SCGI is a variant with lower overhead for high-traffic setups. gmid supports SCGI. For most Gemini capsules, CGI is sufficient.
+
+=> /operating/server-comparison.gmi Comparing Gemini servers
+=> /operating/virtual-hosting.gmi Virtual hosting
+
+=> /operating/ Back to operating index
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

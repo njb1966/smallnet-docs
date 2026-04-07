@@ -1,0 +1,141 @@
+# Gemini protocol overview
+
+A practical summary of the Gemini protocol for developers building clients, servers, or tools. This is not the authoritative spec — it is a working reference for common implementation needs.
+
+The canonical specification is maintained at gemini.circumlunar.space (check the /docs/ path). When in doubt, the spec takes precedence over this page.
+
+## The basics
+
+Gemini is a request/response protocol over TLS. Each transaction is one request and one response, on a single connection that closes when the response is complete.
+
+* Port: 1965 (default)
+* Transport: TLS (required — no plaintext fallback)
+* One request per connection (no pipelining, no keep-alive)
+
+## Request format
+
+A Gemini request is a single line:
+
+```
+<URL>\r\n
+```
+
+Maximum length: 1024 bytes including the \r\n.
+
+The URL must be an absolute URL (including the scheme). Example:
+
+```
+gemini://example.com/page.gmi\r\n
+```
+
+That is the entire request. No headers, no method, no version string.
+
+## Response format
+
+A Gemini response starts with a header line:
+
+```
+<STATUS> <META>\r\n
+```
+
+* STATUS — a two-digit number
+* META — interpretation depends on the status code
+* Followed by \r\n
+
+For success responses (2x), the body follows immediately after the header line. There is no blank line separator — the body starts right after the \r\n.
+
+For all other responses, there is no body.
+
+## Status codes
+
+### 1x — Input required
+The server is asking the client for input. META is a prompt string displayed to the user.
+
+* 10 — Input
+* 11 — Sensitive input (client should not echo input, e.g. passwords)
+
+The client re-sends the same URL with the user's input appended as a query string.
+
+### 2x — Success
+META is the MIME type of the body.
+
+* 20 — Success
+
+For Gemini pages: META is typically `text/gemini; charset=utf-8`. The body is gemtext.
+
+### 3x — Redirect
+META is the new URL.
+
+* 30 — Temporary redirect
+* 31 — Permanent redirect
+
+### 4x — Temporary failure
+META is a human-readable error message. The client may try again later.
+
+* 40 — Temporary failure (generic)
+* 41 — Server unavailable
+* 42 — CGI error
+* 43 — Proxy error
+* 44 — Slow down (META contains wait time in seconds)
+
+### 5x — Permanent failure
+META is a human-readable error message.
+
+* 50 — Permanent failure (generic)
+* 51 — Not found
+* 52 — Gone
+* 53 — Proxy request refused
+* 59 — Bad request
+
+### 6x — Client certificate required
+* 60 — Certificate required
+* 61 — Certificate not authorised
+* 62 — Certificate not valid
+
+## TLS requirements
+
+TLS is mandatory. There is no plaintext mode.
+
+Gemini does not require certificates to be signed by a CA. Clients typically use TOFU (trust on first use): they accept any certificate on first connection and remember it, warning on changes.
+
+Minimum TLS version: 1.2. TLS 1.3 is preferred.
+
+SNI (Server Name Indication) must be sent by the client. Servers use SNI to select the correct certificate when virtual hosting.
+
+## Gemtext MIME type
+
+The MIME type for gemtext is:
+
+```
+text/gemini
+```
+
+The charset parameter is optional but recommended:
+
+```
+text/gemini; charset=utf-8
+```
+
+A server can serve other MIME types (images, plain text, etc.) over Gemini — the client receives them as downloads or inline depending on the client's implementation.
+
+## Client certificates
+
+Gemini includes support for client certificates (6x response codes). This is used for access control and stateful applications (like login flows) without cookies or sessions.
+
+If a client certificate is present, it is passed as TLS client authentication. Servers can read the certificate's subject and expiry to authorise or identify the client.
+
+## What Gemini does not have
+
+By design:
+* No HTTP-style headers
+* No cookies
+* No client-side scripting
+* No caching directives
+* No content negotiation
+
+These omissions are intentional. The protocol is meant to stay small.
+
+=> /developing/ Back to developing index
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

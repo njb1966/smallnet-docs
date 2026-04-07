@@ -1,0 +1,82 @@
+# Gemini client and server libraries
+
+A starting point for developers building Gemini software. This is not a complete list — it covers libraries commonly mentioned in Geminispace as of early 2026.
+
+Availability and maintenance status change. Check each project for current state before using it.
+
+## Finding libraries
+
+The best current indexes of Gemini software:
+
+=> gemini://gemini.circumlunar.space/software/ Gemini software list (circumlunar)
+=> gemini://gemplex.space/ Gemplex (search and directory)
+
+These are more up to date than anything here. Use this page as a starting point, then verify.
+
+---
+
+## By language
+
+### Go
+
+Go is widely used for Gemini server and client implementations. Several full server projects (Molly Brown, gemserv) are written in Go and can be read as implementation references. Go's crypto/tls package handles the TLS layer well.
+
+Search for "gemini" on pkg.go.dev for current library options.
+
+### Rust
+
+Agate (server) is written in Rust and is one of the most actively maintained Gemini projects. The Rust async ecosystem (tokio) handles TLS and TCP cleanly.
+
+Crates.io has several Gemini-related crates — search for "gemini" to find current options for both client and server use.
+
+### Python
+
+Jetforce is a Python framework for building dynamic Gemini applications. If you want a server that lets you write Python request handlers (similar to a WSGI app), Jetforce is the primary option.
+
+For client-side use, there are several Python Gemini client libraries. Search PyPI for "gemini" — filter carefully, the name overlaps with unrelated packages.
+
+### C
+
+gmid and gmnisrv are both written in C. Both are readable codebases and useful as implementation references.
+
+libtls (from LibreSSL) or OpenSSL handle the TLS layer in C implementations.
+
+### Other languages
+
+Gemini libraries exist for Ruby, Perl, JavaScript (Node), PHP, and others. The circumlunar software list is the most reliable index. Maintenance varies widely.
+
+---
+
+## Implementing a minimal client
+
+A Gemini client at its simplest:
+
+1. Open a TLS connection to the server on port 1965
+2. Send the request URL followed by \r\n (max 1024 bytes total)
+3. Read the response header (first line, terminated by \r\n)
+4. Parse the two-digit status code and META string
+5. For 2x responses, read the body
+6. Implement TOFU: store the server's certificate fingerprint and warn on changes
+
+The minimal viable client is a few hundred lines in most languages. The TLS handling is the most complex part.
+
+## Implementing a minimal server
+
+A minimal static file server:
+
+1. Listen on port 1965 with TLS
+2. For each connection, read the request URL (up to 1024 bytes, up to \r\n)
+3. Parse the URL path
+4. Map the path to a file on disk
+5. If the file exists, respond with "20 text/gemini\r\n" + file contents
+6. Handle 51 (not found) and other error cases
+7. Close the connection
+
+CGI, virtual hosting, and redirects are incremental additions on top of this baseline.
+
+=> /developing/protocol-overview.gmi Protocol reference
+
+=> /developing/ Back to developing index
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

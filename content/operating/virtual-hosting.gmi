@@ -1,0 +1,91 @@
+# Virtual hosting (multiple capsules)
+
+Virtual hosting means serving more than one capsule from a single server — each with its own hostname, certificate, and content root.
+
+This is common when:
+* You run capsules for multiple domains
+* You host capsules for other people
+* You want to separate a personal capsule from a project capsule
+
+## How Gemini handles it
+
+Gemini uses TLS, and TLS uses SNI (Server Name Indication). The client sends the target hostname during the TLS handshake — before the Gemini request is even made. The server reads the SNI hostname and selects the correct certificate and content root.
+
+This means each virtual host needs its own TLS certificate (one per hostname). You cannot use a shared certificate across hostnames unless it is a wildcard certificate covering all of them.
+
+## Requirements for each virtual host
+
+* A hostname pointing to your server's IP (DNS A record)
+* A TLS certificate for that hostname
+* A content directory for that capsule
+
+## Setup examples
+
+### gmid
+
+gmid handles virtual hosting through multiple server blocks in its config file. Each block is independent:
+
+```
+server "capsule-one.example" {
+	cert "/etc/gmid/capsule-one.cert.pem"
+	key  "/etc/gmid/capsule-one.key.pem"
+	root "/var/gemini/capsule-one"
+}
+
+server "capsule-two.example" {
+	cert "/etc/gmid/capsule-two.cert.pem"
+	key  "/etc/gmid/capsule-two.key.pem"
+	root "/var/gemini/capsule-two"
+}
+```
+
+Restart gmid after config changes. Each capsule gets its own cert and root.
+
+### Agate (newer versions)
+
+Agate added virtual hosting support in later releases using a content directory layout. Each subdirectory is named after a hostname:
+
+```
+/var/gemini/
+  capsule-one.example/
+    index.gmi
+  capsule-two.example/
+    index.gmi
+```
+
+Start Agate with --content pointing at the parent directory. Check your version's documentation for the exact flag — the interface has changed across versions.
+
+### Molly Brown
+
+Molly Brown uses a TOML config. The base config covers the default host; additional virtual hosts are defined in a VirtualHosts table. Refer to Molly Brown's own documentation for current syntax, as it has evolved across versions.
+
+## Certificates for virtual hosts
+
+You need a valid certificate for each hostname. Options:
+
+* Self-signed certificates — work fine for Gemini (clients use TOFU)
+* Let's Encrypt — if you also run HTTPS on the same server, you may already have certificates you can reuse
+
+Generating a self-signed certificate per hostname:
+
+```
+openssl req -x509 -newkey rsa:4096 \
+  -keyout /etc/gmid/capsule-two.key.pem \
+  -out    /etc/gmid/capsule-two.cert.pem \
+  -days 3650 -nodes \
+  -subj "/CN=capsule-two.example"
+```
+
+Change the CN to match the hostname exactly.
+
+## Port
+
+All capsules share port 1965. Virtual hosting works because the server selects the capsule based on the SNI hostname, not the port.
+
+=> /operating/server-comparison.gmi Comparing Gemini servers
+=> /operating/cgi.gmi Dynamic content with CGI
+
+=> /operating/ Back to operating index
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me

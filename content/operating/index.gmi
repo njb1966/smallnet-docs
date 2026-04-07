@@ -1,0 +1,23 @@
+# Operating a Gemini capsule
+
+Guides for people running their own Gemini server.
+
+These pages assume you already have a server reachable from the internet and a basic capsule running. If you are just starting out, see the hosting guide first.
+
+=> /hosting-first-capsule.gmi Hosting your first capsule (start here if new)
+
+## In this section
+
+=> server-comparison.gmi Choosing and comparing Gemini servers
+=> virtual-hosting.gmi Virtual hosting (serving multiple capsules)
+=> cgi.gmi Dynamic content with CGI
+
+## Also useful
+
+=> /troubleshooting/certificates.gmi Certificate troubleshooting
+=> /troubleshooting/status-codes.gmi Gemini status code reference
+
+=> / Back to main page
+
+Last reviewed: 2026-04-07
+Corrections welcome: smdocs@pm.me
