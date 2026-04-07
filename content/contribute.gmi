@@ -3,8 +3,7 @@
 SmallNet Docs is best-effort and fallible. Corrections and additions are welcome.
 
 ## Preferred: GitHub Pull Requests
-(TBD) Add GitHub repo link once published:
-- repo: smallnet-docs
+=> https://github.com/njb1966/smallnet-docs GitHub: njb1966/smallnet-docs
 
 ## Also welcome
 - GitHub Issues (suggestions/corrections)

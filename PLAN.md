@@ -101,11 +101,11 @@ Top-level sections (Gemini-first):
 
 ---
 
-## 6. Hosting & Deployment (TBD)
-- Gemini server options available: Agate and Molly Brown.
-- Hosting driver: simplicity of deployment + compatibility with existing setup.
-- Minimal resource needs (static text).
-- Deployment method candidate: rsync/scp of `/content/` to Gemini doc root.
+## 6. Hosting & Deployment
+- Server: **Agate** on contabo3 (62.146.182.23)
+- Capsule: **gemini://smnetdocs.gemcities.com/**
+- TLS: wildcard cert `*.gemcities.com`
+- Deploy: `scripts/deploy.sh` (rsync to `/srv/capsules/smnetdocs.gemcities.com/`)
 
 ---
 
@@ -126,17 +126,17 @@ We measure success with low-tech methods:
 ## 8. Roadmap
 
 ### Phase 0 — Setup & Policies (Week 0–1)
-- [ ] Create repo structure and IA skeleton
-- [ ] Publish editorial policy + contribution policy
-- [ ] Publish “Start Here” draft
-- [ ] Decide hosting (Agate vs Molly Brown) + deployment workflow
+- [x] Create repo structure and IA skeleton
+- [x] Publish editorial policy + contribution policy
+- [x] Publish “Start Here” draft
+- [x] Decide hosting (Agate on contabo3) + deployment workflow (scripts/deploy.sh)
 
 ### Phase 1 — MVP Content (Week 2–6)
-- [ ] Populate initial “Clients” pages by platform
-- [ ] Publish “How to read Gemini” and “How to publish (overview)”
-- [ ] Publish “Discovery” page (search, aggregators, directories)
-- [ ] Publish “Troubleshooting basics” (status codes, TLS/certs, common errors)
-- [ ] Add changelog + last-reviewed stamps
+- [x] Populate initial “Clients” pages by platform
+- [x] Publish “How to read Gemini” and “How to publish (overview)”
+- [x] Publish “Discovery” page (search, aggregators, directories)
+- [x] Publish “Troubleshooting basics” (status codes, TLS/certs, common errors)
+- [x] Add changelog + last-reviewed stamps
 - [ ] Run 2–3 usability tests and revise IA
 
 ### Phase 2 — Structured Data + Automation (Month 2–3)

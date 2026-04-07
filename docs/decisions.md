@@ -22,7 +22,12 @@ This log records key decisions to reduce ambiguity and preserve intent.
 - Do not use web proxies as the primary newcomer path.
 - Encourage using a real Gemini client as the “baby step” into the environment.
 
+## 2026-04-07 — Hosting and deployment
+- Server: **Agate** (already running on contabo3 / 62.146.182.23)
+- Capsule hostname: **smnetdocs.gemcities.com**
+- TLS: wildcard cert `*.gemcities.com` (already present on server)
+- Deployment: `scripts/deploy.sh` — rsync of `/content/` and `index.gmi` to `/srv/capsules/smnetdocs.gemcities.com/`
+- GitHub repo: **njb1966/smallnet-docs**
+
 ## TBD
-- Hosting choice: Agate vs Molly Brown
-- Deployment workflow
 - Freshness thresholds (default target likely 90 days for core pages)
