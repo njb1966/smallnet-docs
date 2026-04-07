@@ -9,6 +9,10 @@ Graphical clients. A good first choice if you prefer a familiar browser-like fee
 Cross-platform (Windows, macOS, Linux). One of the most actively maintained GUI clients. Features include bookmarks, subscriptions (Atom/Gemini feeds), history, and multiple tabs. Good starting point for most newcomers.
 => gemini://skyjake.fi/lagrange/ Lagrange home capsule
 
+### Kristall
+Cross-platform GUI client (Windows, macOS, Linux). Supports Gemini, Gopher, Finger, and HTTP. A good option if you want one client for multiple small-web protocols.
+=> https://github.com/MasterQ32/kristall Kristall on GitHub (web link)
+
 ### Castor
 Linux/BSD desktop client (GTK). Simple and lightweight. Less feature-complete than Lagrange but easy to get running.
 => gemini://git.sr.ht/~julienxx/castor Castor on Sourcehut
